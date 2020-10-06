@@ -86,7 +86,3 @@ mvn compile exec:java
 Go to http://localhost:8080
 
 You can search for movies by title or and click on any entry.
-
-=== Deploy to Heroku
-
-include::/developer/Readme.adoc[tags=heroku]
