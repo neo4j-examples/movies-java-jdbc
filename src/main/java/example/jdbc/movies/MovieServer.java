@@ -1,9 +1,9 @@
 package example.jdbc.movies;
 
-import example.jdbc.util.Util;
+import example.jdbc.env.Environment;
+import spark.Spark;
 
 import static spark.Spark.externalStaticFileLocation;
-import static spark.Spark.setPort;
 
 /**
  * @author Michael Hunger @since 22.10.13
@@ -11,9 +11,9 @@ import static spark.Spark.setPort;
 public class MovieServer {
 
     public static void main(String[] args) {
-        setPort(Util.getWebPort());
+        Spark.port(Environment.getWebPort());
         externalStaticFileLocation("src/main/webapp");
-        final MovieService service = new MovieService(Util.getNeo4jUrl());
+        final MovieService service = new MovieService(Environment.getNeo4jUrl());
         new MovieRoutes(service).init();
     }
 }
