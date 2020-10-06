@@ -55,17 +55,28 @@ To access the `ResultSet` you call the cursor method `rs.next()` in a while loop
 
 [source,java]
 ----
-Connection con = DriverManager.getConnection("jdbc:neo4j://localhost:7474/");
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-String query = "MATCH (:Movie {title:{1}})<-[:ACTED_IN]-(a:Person) RETURN a.name as actor";
+public class Example {
 
-try (PreparedStatement stmt = con.prepareStatement(query)) {
+    public static void main(String[] args) throws SQLException {
 
-    stmt.setString(1,"The Matrix");
+        String query = "MATCH (:Movie {title:{1}})<-[:ACTED_IN]-(a:Person) RETURN a.name as actor";
 
-    try (ResultSet rs = stmt.executeQuery()) {
-        while(rs.next()) {
-             System.out.println(rs.getString("actor"));
+        try (Connection con = DriverManager.getConnection("jdbc:neo4j://localhost:7474/");
+             PreparedStatement stmt = con.prepareStatement(query)) {
+
+            stmt.setString(1, "The Matrix");
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while(rs.next()) {
+                     System.out.println(rs.getString("actor"));
+                }
+            }
         }
     }
 }
