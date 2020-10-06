@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.neo4j.example</groupId>
     <artifactId>neo4j-movies</artifactId>
@@ -7,7 +8,8 @@
     <packaging>jar</packaging>
     <name>Neo4j Movies Demo</name>
     <description>Neo4j Movies Demo App</description>
-    <url>http://github.com/jexp/neo4j-movies</url>
+    <url>https://github.com/neo4j-examples/movies-java-jdbc</url>
+
     <properties>
         <neo4j.version>2.0.0-M06</neo4j.version>
     </properties>
